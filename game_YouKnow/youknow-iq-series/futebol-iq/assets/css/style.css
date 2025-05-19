@@ -12,7 +12,7 @@ body {
     flex-direction: column;
     background-color: rgb(6, 31, 0);
     background: linear-gradient(-160deg, rgb(9, 33, 1) 25%, rgb(37, 156, 7) 100%);
-    font-family: "Russo One", sans-serif;
+    font-family: "Aldrich", sans-serif;
 }
 /* ------------------ Header nav ------------------ */
 
@@ -153,6 +153,7 @@ h1 {
     font-size: 1.2em;
     height: 2.2em;
     display: flex;
+    text-transform: uppercase;
     align-items: center;     /* Alinha verticalmente */
     justify-content: center; /* Alinha horizontalmente */
 }
@@ -199,7 +200,24 @@ footer {
     margin-top: 2em;
     color: #FFF;
     font-size: clamp(14px, 2vw, 20px);
-    margin-bottom: 1em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.ico-img-footer{
+  width: 32px;
+}
+.ico-img-footer:hover{
+  filter: drop-shadow(0px 0px 2px #ffffff);
+  transition: 0.2s linear;
+  transform: translateY(-2px);
+}
+.ico-footer{
+    margin-top: 0.8em;
+    width: 300px;
+    display: flex;
+    gap: 1.5em;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Estilo da score final */
@@ -327,6 +345,9 @@ footer {
     footer{
         font-size: 0.8em;
         margin-top: 2.6em;
+    }
+    .ico-img-footer{
+        width: 20px;
     }
 }
 
