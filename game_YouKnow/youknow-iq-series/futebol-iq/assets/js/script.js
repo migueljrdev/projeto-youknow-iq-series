@@ -234,19 +234,19 @@ function finishGame() {
     if(scorePct < 30) {
         document.querySelector('.scoreText1').innerHTML = 'Sabe nada!';
         document.querySelector('.scorePct').style.color = "#FF0000";
-        document.querySelector('.prizeImage').src = "assets/img/img-winner/trofeu-sabe-nada.png";
+        document.querySelector('.prizeImage').src = "assets/img/img-winner/trofeu-sabe-nada.webp";
     } else if (scorePct >=30 && scorePct < 50){
         document.querySelector('.scoreText1').innerHTML = 'Sabe o basico!';
         document.querySelector('.scorePct').style.color = "#FF9900";
-        document.querySelector('.prizeImage').src = "assets/img/img-winner/trofeu-sabe-basico.png";
+        document.querySelector('.prizeImage').src = "assets/img/img-winner/trofeu-sabe-basico.webp";
     } else if (scorePct >=50 && scorePct < 80){
         document.querySelector('.scoreText1').innerHTML = 'Sabe muito!';
         document.querySelector('.scorePct').style.color = "#90EE90";
-        document.querySelector('.prizeImage').src = "assets/img/img-winner/trofeu-bom.png";        
+        document.querySelector('.prizeImage').src = "assets/img/img-winner/trofeu-bom.webp";        
     } else if (scorePct >= 80){
         document.querySelector('.scoreText1').innerHTML = 'É fanático!';
         document.querySelector('.scorePct').style.color = "#008000";
-        document.querySelector('.prizeImage').src = "assets/img/img-winner/trofeu-fanatico.png";        
+        document.querySelector('.prizeImage').src = "assets/img/img-winner/trofeu-fanatico.webp";        
     }
     
     document.querySelector('.scorePct').textContent = `Acertou ${scorePct}%`;

@@ -36,7 +36,7 @@ const game = [
 
     {
         options: [
-            { img: 'assets/img/harry-potter-e-a-pedra-filosofal.jpg', id: 1 },
+            { img: 'assets/img/harry-potter-e-a-pedra-filosofal.webp', id: 1 },
             { img: 'assets/img/Clube-da-luta.jpg', id: 4 }, 
             { img: 'assets/img/naufrago.jpg', id: 3 },
             { img: 'assets/img/john-wick-de-volta-ao-jogo.jpg', id: 2 },

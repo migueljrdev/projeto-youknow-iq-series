@@ -235,11 +235,11 @@ function finishGame() {
     if(scorePct < 30) {
         document.querySelector('.scoreText1').innerHTML = 'Iniciante!';
         document.querySelector('.scorePct').style.color = "#FF0000";
-        document.querySelector('.prizeImage').src = "assets/img/img-winner/iniciante.png";
+        document.querySelector('.prizeImage').src = "assets/img/img-winner/iniciante.webp";
     } else if (scorePct >=30 && scorePct < 50){
         document.querySelector('.scoreText1').innerHTML = 'Um aprendiz!';
         document.querySelector('.scorePct').style.color = "#FF9900";
-        document.querySelector('.prizeImage').src = "assets/img/img-winner/aprendiz.jpg";
+        document.querySelector('.prizeImage').src = "assets/img/img-winner/aprendiz.webp";
     } else if (scorePct >=50 && scorePct < 80){
         document.querySelector('.scoreText1').innerHTML = 'Mestre!';
         document.querySelector('.scorePct').style.color = "#90EE90";

@@ -242,7 +242,7 @@ function finishGame() {
     } else if (scorePct >=50 && scorePct < 80){
         document.querySelector('.scoreText1').innerHTML = 'OscarMan';
         document.querySelector('.scorePct').style.color = "#90EE90";
-        document.querySelector('.prizeImage').src = "assets/img/img-winner/oscar.png";        
+        document.querySelector('.prizeImage').src = "assets/img/img-winner/oscar.webp";        
     } else if (scorePct >= 80){
         document.querySelector('.scoreText1').innerHTML = 'Absolute Cinema!';
         document.querySelector('.scorePct').style.color = "#008000";

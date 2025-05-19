@@ -20,8 +20,8 @@ const game = [
     {
         options: [
             { img: 'assets/img/robben.jpg', id: 2 },
-            { img: 'assets/img/debruyne.jpg', id: 3 }, 
-            { img: 'assets/img/Gianluigi_Buffon.jpg', id: 0 },
+            { img: 'assets/img/debruyne.webp', id: 3 }, 
+            { img: 'assets/img/Gianluigi_Buffon.webp', id: 0 },
             { img: 'assets/img/benzema.jpeg', id: 4 },
             { img: 'assets/img/salah.jpg', id: 1 }
         ],

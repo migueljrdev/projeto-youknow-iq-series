@@ -6,11 +6,11 @@
 
 @font-face {
   font-family: "Oswald";
-  src: url('../../../assets/fonts/Oswald-Light.ttf') format('truetype');
+  src: url('../../../assets/fonts/Oswald-Light.woff2') format('woff2');
 }
 @font-face {
   font-family: "Oswald-Bold";
-  src: url('../../../assets/fonts/Oswald-Bold.ttf') format('truetype');
+  src: url('../../../assets/fonts/Oswald-Bold.woff2') format('woff2');
 }
 
 body {

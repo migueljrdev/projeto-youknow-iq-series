@@ -4,7 +4,7 @@ const game = [
         options: [
             { img: 'assets/img/Goku.jpg', id: 1 },
             { img: 'assets/img/Naruto.jpg', id: 0 }, 
-            { img: 'assets/img/Gojo.jpg', id: 2 },
+            { img: 'assets/img/Gojo.webp', id: 2 },
             { img: 'assets/img/Monkey.jpg', id: 4 },
             { img: 'assets/img/Eren_Jaeger.jpg', id: 3 }
         ],
@@ -40,7 +40,7 @@ const game = [
             { img: 'assets/img/lucy.jpg', id: 0 }, 
             { img: 'assets/img/misa-amane.jpg', id: 3 },
             { img: 'assets/img/Mumen-rider.jpg', id: 1 },
-            { img: 'assets/img/Yahiko.jpg', id: 2 }
+            { img: 'assets/img/Yahiko.webp', id: 2 }
         ],
         respostas: [
             {dataA:'Lucy', i: 0},
