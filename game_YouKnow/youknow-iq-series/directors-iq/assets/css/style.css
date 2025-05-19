@@ -1,0 +1,485 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+@font-face {
+    font-family: 'Cinzel regular';
+    src: url('../../../../assets/fonts/Cinzel-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap; /* Opcional - melhora performance */
+}
+
+@font-face {
+    font-family: 'Cinzel bold';
+    src: url('../../../../assets/fonts/Cinzel-Bold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap; /* Opcional - melhora performance */
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(60, 15, 0);
+    background: linear-gradient(-160deg, rgb(43, 0, 0) 25%, rgb(205, 59, 10) 100%);
+    font-family: "Cinzel regular", sans-serif;
+}
+/* ------------------ Header nav ------------------ */
+
+a {
+    text-decoration: none;
+}
+.header {
+    width: 100%;
+}
+    
+.nav {
+  max-width: 1100px;
+  height: 100px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.img-logo {
+  width: 150px;
+}
+
+.img-logo:hover{
+  filter: drop-shadow(0px 0px 2px #ffffff6f);
+  transition: 0.2s linear;
+}
+
+.nav-list {
+  list-style: none;
+}
+
+.nav-list a {
+  font-size: 16px;
+  color: #01E4FE;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #01E4FE;
+  font-weight: bold;
+}
+
+.nav-list a:hover{
+  background-color: rgba(1, 229, 254, 0.844);
+  border-radius: 10px;
+  color: #010F28;
+  transition: 0.2s linear;
+  box-shadow: 0 0 14px #01e5fe;
+  outline: none;
+  transform: translateY(-4px);
+}
+/* ------------------ FIM header nav------------------ */
+h1 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: clamp(24px, 5vw, 40px);
+    filter: drop-shadow(0px 2px 4px #fc5204c4);
+    font-family: 'Cinzel bold', sans-serif;
+}
+
+.progress {
+    height: 5px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+}
+.progress--bar {
+    background-color: #00FF00;
+    height: 100%;
+    transition: all ease .5s;
+    width: 0%;
+}
+
+.neutralArea {
+    width: min(95%, 1060px);
+    min-height: 200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 2px solid #ffffff;
+    padding: 20px;
+    gap: 15px;
+}
+
+.item {
+    width: clamp(100px, 15vw, 170px);
+    height: clamp(100px, 15vw, 420px);
+    background-color: #178ebc;
+    color: transparent;
+    font-size: clamp(20px, 3vw, 30px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+    background-size: cover;
+    background-position: center;
+    margin-top: 14px;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: none; /* Importante para controle total dos toques */
+    transition: transform 0.1s ease; /* Adiciona feedback visual */
+}
+.item.dragging {
+    opacity: 0.5;
+    transform: scale(1.05); /* Efeito visual ao arrastar */
+    z-index: 1000; /* Garante que fique acima dos outros elementos */
+}
+
+.areas {
+    width: min(95%, 1200px);
+    display: flex;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.areas.correct .area {
+    border: 2px solid #00FF00;
+}
+.area {
+    width: clamp(120px, 20vw, 200px);
+    height: clamp(120px, 20vw, 350px);
+    border: 2px solid #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    text-align: center;
+}
+.area span {
+    color: #FFF ;
+    font-weight: bold;
+    font-size: 1.2em;
+    height: 2.2em;
+    display: flex;
+    align-items: center;     /* Alinha verticalmente */
+    justify-content: center; /* Alinha horizontalmente */
+}
+.hover {
+    background-color: rgba(255, 255, 255, 0.171);
+}
+
+.btn-next {
+    color: #ffffff;
+    padding: 10px;
+    font-size: clamp(16px, 3vw, 20px);
+    margin-top: 20px;
+    display: none;
+    text-transform: uppercase;
+    appearance: none;
+    background-color: rgb(46, 200, 12);
+    border: 2px solid rgb(11, 58, 0);
+    border-radius: 40px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: 600;
+    line-height: normal;
+    outline: none;
+    padding: 16px 30px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
+}
+
+.btn-next:hover, .btn-next:focus {
+    color: rgb(11, 58, 0);
+    border: 2px solid rgb(11, 58, 0);
+    background-color: rgb(79, 255, 39);
+    box-shadow: 0 0 20px #fc5204c4;
+    outline: none;
+    transform: translateY(-4px);
+}
+
+footer {
+    margin-top: 2em;
+    color: #FFF;
+    font-size: clamp(14px, 2vw, 16px);
+    margin-bottom: 10px;
+}
+
+/* Estilo da score final */
+.scoreArea {
+    background-color: rgba(235, 166, 217, 0.233);
+    width: min(90%, 400px);
+    border-radius: 30px;
+    text-align: center;
+    display: none;
+    padding: 20px;
+}
+.prizeImage {
+    width: auto;
+    height: clamp(100px, 25vh, 200px);
+    border-radius: 30px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.399);
+}
+.scoreText1 {
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    margin-top: 0.4em;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    font-size: clamp(24px, 5vw, 32px);
+
+}
+.scorePct {
+    color: #0d630d;
+    margin-top: 0.6em;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    font-size: clamp(28px, 6vw, 56px);
+    font-weight: bold;
+    font-family: "Anton", sans-serif;
+}
+.scoreText2 {
+    font-size: clamp(14px, 2.5vw, 18px);
+    color: #ffffff;
+    font-weight: 400;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.629);
+    margin-bottom: 20px;
+    font-family: "Roboto Condensed", sans-serif;
+}
+.btn-restart {
+    border: 1px solid rgb(0, 83, 91);
+    border-radius: 40px;
+    background-color: rgb(0, 122, 134);
+    color: #ffffff;
+    padding: 0.8em 2.2em;
+    cursor: pointer;
+    margin-top: 1em;
+    box-sizing: border-box;
+    outline: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    font-size: clamp(1em, 2.5vw, 1.4em);
+}
+.btn-restart:hover {
+    background-color: rgba(0, 168, 183, 0.896);
+    outline: none;
+    transform: translateY(-4px);
+}
+
+
+
+/* ------------------ Mobile ------------------ */
+
+@media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden;
+    }
+    .item.dragging {
+        transform: scale(1.05);
+        opacity: 0.8;
+        z-index: 1000;
+    }
+    
+    /* Melhore o feedback visual para áreas de drop */
+    .area.hover, .neutralArea.hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transition: background-color 0.2s ease;
+    }
+    .item {
+        width: 24vw;
+        height: 40vw;
+        min-width: 80px;
+        min-height: 80px;
+        margin-top: 0.3em;
+        touch-action: none; /* Isso é essencial para controle total dos toques */
+        -webkit-user-drag: none;
+        user-select: none;
+        transition: transform 0.1s ease;
+    }
+    
+    .area {
+        width: 28vw;
+        height: 50vw;
+        min-width: 90px;
+        min-height: 90px;
+        overflow: hidden;
+    }
+    .area span {
+        height: 3em;
+        font-size: 0.7em;
+    }
+    .prizeImage {
+        width: auto;
+        height: clamp(100px, 25vh, 170px);
+    }
+    
+    .btn-next{
+        font-size: 1.3em;
+    }
+    .scoreText1 {
+        margin-top: 0.4em;
+        font-size: 1.8em;
+    }
+    .scorePct {
+        font-size: 3.2em;
+    }
+    .scoreText2 {
+        font-size: 0.95em;
+    }
+    .btn-restart{
+        font-size: 1.4em;
+    }
+    footer{
+        font-size: 0.8em;
+        margin-bottom: 1em;
+    }
+}
+
+/* @media screen and (max-width: 768px) {
+    .neutralArea {
+        padding: 15px;
+        gap: 10px;
+    }
+    
+    .item {
+        width: clamp(80px, 20vw, 120px);
+        height: clamp(80px, 20vw, 120px);
+        margin-top: 6px;
+    }
+    
+    .area {
+        width: clamp(100px, 26vw, 124px);
+        height: clamp(100px, 26vw, 124px);
+        font-size: 12px;
+    }
+    
+    h1 {
+        margin-bottom: 25px;
+    }
+} */
+
+/* @media screen and (max-width: 500px) {
+    body {
+        padding: 15px;
+        padding-top: 0;
+    }
+    
+    .neutralArea {
+        padding: 10px;
+        gap: 8px;
+    }
+    
+    .item {
+        width: 22vw;
+        height: 40vw;
+        min-width: 70px;
+        min-height: 70px;
+        margin-top: 4px;
+    }
+    
+    .area {
+        width: 26vw;
+        height: 40vw;
+        min-width: 90px;
+        min-height: 90px;
+    }
+    
+    .area span{
+        font-size: 10px;
+    }
+    
+    .btn-next, .btn-restart {
+        padding: 1em 4.6em;
+        font-size: 1em;
+    }
+    .scoreArea{
+        width: min(100%, 400px);
+    }
+    .scoreText1 {
+        font-size: 2em;
+    }
+    .scorePct {
+        font-size: 3em;
+    }
+    .scoreText2 {
+        font-size: 0.82em;
+    }
+    footer {
+        font-size: 0.6em;
+        margin-top: 3em;
+    }
+} */
+@media (min-width: 769px) and (max-width: 1024px){
+    html, body {
+        overflow-x: hidden;
+    }
+        
+    .item.dragging {
+        transform: scale(1.05);
+        opacity: 0.8;
+        z-index: 1000;
+    }
+    
+    /* Melhore o feedback visual para áreas de drop */
+    .area.hover, .neutralArea.hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transition: background-color 0.2s ease;
+    }
+    .item {
+        width: 24vw;
+        height: 40vw;
+        min-width: 80px;
+        min-height: 80px;
+        margin-top: 0.3em;
+        touch-action: none; /* Isso é essencial para controle total dos toques */
+        -webkit-user-drag: none;
+        user-select: none;
+        transition: transform 0.1s ease;
+    }
+    
+    .area {
+        width: 28vw;
+        height: 50vw;
+        min-width: 90px;
+        min-height: 90px;
+        overflow: hidden;
+    }
+    .area span {
+        height: 3em;
+        font-size: 2em;
+    }
+    .prizeImage {
+        width: auto;
+        height: clamp(100px, 25vh, 170px);
+    }
+    .btn-next{
+        font-size: 2em;
+    }
+    .scoreText1 {
+        margin-top: 0.4em;
+        font-size: 1.8em;
+    }
+    .scorePct {
+        font-size: 3.2em;
+    }
+    .scoreText2 {
+        font-size: 0.95em;
+    }
+    .btn-restart{
+        font-size: 1.4em;
+    }
+    footer{
+        font-size: 0.8em;
+        margin-bottom: 1em;
+    }
+}

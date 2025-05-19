@@ -1,0 +1,376 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+@font-face {
+  font-family: "Oswald";
+  src: url('../../assets/fonts/Oswald-Light.ttf') format('truetype');
+}
+
+body {
+    min-height: 100vh;
+    background-color: #010f28;
+    font-family: "Russo One";
+    font-weight: 300;
+    background: linear-gradient(-160deg, rgb(1, 15, 40) 40%, rgb(10, 126, 172) 99%);
+}
+  
+a {
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+  /* ------------------ Header nav ------------------ */
+.header {
+  padding-inline: 16px;
+}
+
+.nav {
+  max-width: 1100px;
+  height: 150px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.img-logo {
+  width: 250px;
+}
+
+.img-logo:hover{
+  filter: drop-shadow(0px 0px 2px #ffffff6a);
+  transition: 0.2s linear;
+}
+
+.nav-list {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-list a {
+  font-size: 22px;
+  color: #01E4FE;
+  padding: 16px;
+  border-radius: 10px;
+  border: 2px solid #01E4FE;
+}
+
+.nav-list a:hover{
+  background-color: rgba(1, 229, 254, 0.844);
+  border-radius: 10px;
+  color: #010F28;
+  transition: 0.2s linear;
+  box-shadow: 0 0 14px #01e5fe;
+  outline: none;
+  transform: translateY(-4px);
+}
+/* ------------------ FIM header nav ------------------ */
+
+/* ------------------ menu hamburguer ------------------ */
+/* .hamburger {
+  display: none;
+  border: none;
+  background: none;
+  border-top: 3px solid #fff;
+  cursor: pointer;
+}
+
+.hamburger::after,
+.hamburger::before {
+  content: " ";
+  display: block;
+  width: 30px;
+  height: 3px;
+  background: #fff;
+  margin-top: 5px;
+  position: relative;
+  transition: 0.3s;
+} */
+/* ------------------ FIM menu hamburguer ------------------ */
+
+/* ------------------ divs conteiner desktop ------------------ */
+.conteiner {
+  display: flex;
+  width: 70vw;
+  height: calc(90vh - 150px);
+  margin: auto;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+}
+
+.carousel {
+  display: flex;
+  gap: 4em;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.area {
+  width: 20vw;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  transition: all 0.3s ease;
+}
+
+.area:hover{
+  transform: scale(1.02);
+}
+
+.area:nth-of-type(1) .poster-game:hover {
+  filter: drop-shadow(0px 0px 6px #00ff37);
+  transition: 0.2s linear;
+}
+
+.area:nth-of-type(2) .poster-game:hover {
+  filter: drop-shadow(0px 0px 6px #f700ff);
+  transition: 0.2s linear;
+}
+
+.area:nth-of-type(3) .poster-game:hover {
+  filter: drop-shadow(0px 0px 6px #feb201);
+  transition: 0.2s ease-out;
+}
+
+
+.link-game{
+  width: inherit;
+  height: inherit;
+}
+.poster-game{
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  border-radius: 10px;
+}
+.carousel-btn {
+  display: none;
+  
+}
+
+.indicators {
+  display: none;
+  justify-content: center;
+  margin-bottom: 30px;
+  width: 100%;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: #ccc;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #01E4FE;
+}
+/* ------------------ FIM divs conteiner desktop ------------------ */
+
+
+footer{
+  margin: auto;
+  text-align: center;
+  font-size: 1em;
+  margin-top: 1em;
+  color: #fff;
+  font-family: "Oswald";
+}
+
+
+/* ------------------ Mobile ------------------ */
+
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: hidden;
+  }  
+
+  .img-logo {
+    width: 200px;
+  }
+  
+  .nav-list {
+    gap: 8px;
+    flex-direction: column;
+  }
+  
+  .nav-list a {
+    font-size: 1em;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #01E4FE;
+    display: block;
+  }
+  
+  /* .hamburger {
+    display: block;
+    z-index: 11;
+  }
+
+  .nav-list {
+    position: fixed;
+    top: 120px;
+    left: 0;
+    width: 100vw;
+    height: 20vh;
+    background: rgba(103, 135, 189, 0.305);
+    clip-path: circle(100px at 100% -75%);
+    transition: 0.3s ease-out;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+    gap: 10;
+
+    pointer-events: none;
+    z-index: 10;
+    border-radius: 0 0 0 75%;
+  }
+
+  .nav-list a {
+    font-size: 24px;
+    opacity: 0;
+    transition: 0.2s all;
+    margin-right: 3.4em;
+  } */
+
+  /* Estilos ativos */
+
+  /* .nav.active .nav-list {
+    clip-path: circle(1500px at 100% -75%);
+    pointer-events: all;
+  }
+
+  .nav.active .nav-list a {
+    opacity: 1;
+  }
+
+  .nav.active .hamburger {
+    position: fixed;
+    top: 66px;
+    right: 110px;
+    border-top-color: transparent;
+  }
+
+  .nav.active .hamburger::before {
+    transform: rotate(135deg);
+  }
+
+  .nav.active .hamburger::after {
+    transform: rotate(-135deg);
+    top: -7px;
+  } */
+/* ------------------ Mobile carroseul ------------------ */
+  .conteiner {
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .carousel {
+    position: relative;
+    width: 100%;
+  }
+
+  .area {
+    display: none;
+    width: 100%;
+  }
+
+  .area.active {
+    display: flex;
+  }
+
+  .carousel-btn {
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    font-size: 2em;
+    color: #01E4FE;
+    cursor: pointer;
+    padding: 12px;
+    z-index: 2;
+  }
+
+  .carousel-btn.left {
+    left: 10px;
+  }
+
+  .carousel-btn.right {
+    right: 10px;
+  }
+
+  .indicators {
+    display: flex;
+    cursor: pointer;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px){
+  html, body {
+    overflow-x: hidden;
+  }
+  
+  .nav{
+    max-width: 804px;
+  }
+  .conteiner {
+    flex-direction: column;
+    width: 90%;
+  }
+
+  .carousel {
+    position: relative;
+    width: 100%;
+  }
+
+  .area {
+    display: none;
+    width: 100%;
+  }
+
+  .area.active {
+    display: flex;
+  }
+
+  .carousel-btn {
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    font-size: 2.4em;
+    color: rgba(1, 229, 254, 0.492);
+    cursor: pointer;
+    padding: 12px;
+    z-index: 2;
+    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.719));
+
+  }
+
+  .carousel-btn.left {
+    left: 10px;
+  }
+
+  .carousel-btn.right {
+    right: 10px;
+  }
+
+  .indicators {
+    display: flex;
+    cursor: pointer;
+  }
+}
