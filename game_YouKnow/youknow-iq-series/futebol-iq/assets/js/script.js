@@ -25,6 +25,7 @@ const progressBar = document.querySelector('.progress--bar');
 const btnRestart = document.querySelector('.btn-restart');
 
 // Inicializa o jogo
+detectTouchDevice();
 initGame();
 
 // Event listeners
@@ -382,3 +383,85 @@ function setupTouchEvents(item) {
         }
     }, { passive: false });
 }
+
+
+/*firebase*/
+const firebaseConfig = {
+    apiKey: "AIzaSyA_NJci82viVE-wXH2gNj4ZEWmN708s6WI",
+    authDomain: "youknow-606b5.firebaseapp.com",
+    projectId: "youknow-606b5",
+    storageBucket: "youknow-606b5.firebasestorage.app",
+    messagingSenderId: "983287621066",
+    appId: "1:983287621066:web:a36b889c6e45f4c0e2db33",
+    measurementId: "G-3S0HRSH05Y"
+};
+
+// Initialize Firebase
+
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+const analytics = firebase.analytics();
+
+let avaliacaoSelecionada = 0;
+
+function selecionarAvaliacao(nota) {
+    avaliacaoSelecionada = nota;
+    atualizarEstrelas();
+}
+
+function atualizarEstrelas() {
+    const estrelas = document.querySelectorAll("#estrelas span");
+    estrelas.forEach((estrela, index) => {
+        if (index < avaliacaoSelecionada) {
+            estrela.classList.add("selecionada");
+        } else {
+            estrela.classList.remove("selecionada");
+        }
+    });
+}
+
+
+function enviarAvaliacao() {
+    const comentario = document.getElementById('comentarioInput').value.trim();
+
+    if (avaliacaoSelecionada === 0 || comentario === "") {
+        alert("Por favor, selecione uma nota e escreva um comentário.");
+        return;
+    }
+
+    const avaliacao = {
+        nota: avaliacaoSelecionada,
+        texto: comentario,
+        timestamp: Date.now()
+    };
+
+    const avaliacoesRef = database.ref('avaliacoes');
+    avaliacoesRef.push(avaliacao);
+
+    document.getElementById('comentarioInput').value = "";
+    avaliacaoSelecionada = 0;
+    atualizarEstrelas();
+
+    alert("Obrigado pelo seu feedback!");
+}
+
+function carregarAvaliacoes() {
+    const container = document.getElementById('comentariosRecebidos');
+    container.innerHTML = "";
+
+    const avaliacoesRef = database.ref('avaliacoes');
+
+    avaliacoesRef.orderByChild("timestamp").on("child_added", function(snapshot) {
+        const av = snapshot.val();
+        const div = document.createElement("div");
+        div.innerHTML = `<strong>${"⭐".repeat(av.nota)}</strong> — ${av.texto}`;
+        container.prepend(div);
+    });
+}
+
+// Chamar ao carregar a página
+window.onload = function() {
+    carregarAvaliacoes();
+}
+
+
