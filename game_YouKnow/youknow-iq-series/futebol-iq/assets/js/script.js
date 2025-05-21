@@ -384,6 +384,22 @@ function setupTouchEvents(item) {
     }, { passive: false });
 }
 
+/*muda cor estrela hover */
+function hoverEstrelas(nota) {
+    const estrelas = document.querySelectorAll("#estrelas span");
+    estrelas.forEach((estrela, index) => {
+        estrela.style.color = index < nota ? 'gold' : 'gray';
+    });
+}
+
+function resetHover() {
+    const estrelas = document.querySelectorAll("#estrelas span");
+    estrelas.forEach((estrela, index) => {
+        estrela.style.color = index < avaliacaoSelecionada ? 'gold' : 'gray';
+    });
+}
+
+
 
 /*firebase*/
 const firebaseConfig = {
@@ -447,15 +463,62 @@ function enviarAvaliacao() {
 
 function carregarAvaliacoes() {
     const container = document.getElementById('comentariosRecebidos');
+    const mediaDiv = document.getElementById('mediaAvaliacao');
     container.innerHTML = "";
+    mediaDiv.innerHTML = "";
 
     const avaliacoesRef = database.ref('avaliacoes');
 
-    avaliacoesRef.orderByChild("timestamp").on("child_added", function(snapshot) {
-        const av = snapshot.val();
-        const div = document.createElement("div");
-        div.innerHTML = `<strong>${"⭐".repeat(av.nota)}</strong> — ${av.texto}`;
-        container.prepend(div);
+    avaliacoesRef.on("value", function(snapshot) {
+        container.innerHTML = "";  // Limpa comentários anteriores
+        mediaDiv.innerHTML = "";   // Limpa média anterior
+
+        let soma = 0;
+        let total = 0;
+        const comentarios = [];
+
+        snapshot.forEach(function(childSnapshot) {
+            const av = childSnapshot.val();
+            soma += av.nota;
+            total++;
+            comentarios.push(av);
+        });
+
+        // Mostrar apenas os 3 comentários mais recentes
+        const ultimos5 = comentarios.slice(-5).reverse(); // últimos 3 e em ordem decrescente
+
+        ultimos5.forEach(av => {
+            const div = document.createElement("div");
+            div.innerHTML = `<strong>${"⭐".repeat(av.nota)}</strong> — ${av.texto}`;
+            container.appendChild(div);
+        });
+
+        if (total > 0) {
+            const media = soma / total;
+            const estrelasInteiras = Math.floor(media);
+            const temMeiaEstrela = media - estrelasInteiras >= 0.25 && media - estrelasInteiras < 0.75;
+            const estrelasVazias = 5 - estrelasInteiras - (temMeiaEstrela ? 1 : 0);
+
+            let estrelasHtml = "";
+
+            for (let i = 0; i < estrelasInteiras; i++) {
+                estrelasHtml += '<i class="fas fa-star"></i>';
+            }
+
+            if (temMeiaEstrela) {
+                estrelasHtml += '<i class="fas fa-star-half-alt"></i>';
+            }
+
+            for (let i = 0; i < estrelasVazias; i++) {
+                estrelasHtml += '<i class="far fa-star"></i>';
+            }
+
+            mediaDiv.innerHTML = `
+                <div><strong>Média de avaliação:</strong> </br>${estrelasHtml} (${media.toFixed(1)})</div>
+            `;
+        } else {
+            mediaDiv.innerHTML = "Ainda não há avaliações.";
+        }
     });
 }
 
