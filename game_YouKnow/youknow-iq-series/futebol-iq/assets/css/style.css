@@ -223,7 +223,7 @@ footer {
 /* Estilo da score final */
 .scoreArea {
     background-color: rgba(181, 227, 169, 0.307);
-    width: min(90%, 400px);
+    width: min(90%, 500px);
     border-radius: 30px;
     text-align: center;
     display: none;
@@ -293,7 +293,7 @@ footer {
 .avaliacaoComentario {
     margin-top: 30px;
     padding: 20px;
-    background: rgba(5, 117, 11, 0.5);
+    background: rgb(5, 103, 10);
     border-radius: 8px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.1);
     text-align: center;

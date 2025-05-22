@@ -496,8 +496,9 @@ function carregarAvaliacoes() {
         if (total > 0) {
             const media = soma / total;
             const estrelasInteiras = Math.floor(media);
-            const temMeiaEstrela = media - estrelasInteiras >= 0.25 && media - estrelasInteiras < 0.75;
+            const temMeiaEstrela = (media - estrelasInteiras >= 0.25) && (media - estrelasInteiras <= 0.75);
             const estrelasVazias = 5 - estrelasInteiras - (temMeiaEstrela ? 1 : 0);
+            console.log("Média calculada:", media);
 
             let estrelasHtml = "";
 
