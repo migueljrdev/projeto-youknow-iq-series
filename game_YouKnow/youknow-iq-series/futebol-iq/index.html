@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-<body>
+<body data-quiz-id="futebol-iq">
     <header class="header">
         <nav class="nav">
             <a href="../../index.html"><img class="img-logo" src="../../assets/img/logo.png" alt="logotipo-youknow"></a>
@@ -45,8 +45,7 @@
         <button class="btn-restart">Fazer novamente</button>
         
         <div class="avaliacaoComentario">
-            <h3 class="h3-avaliacao">O que achou do quiz?</h3>
-            
+            <h3 class="h3-avaliacao">O que achou do quiz?</h3>           
             <!-- Estrelas -->
             <div id="estrelas">
                 <span onmouseover="hoverEstrelas(1)" onmouseout="resetHover()" onclick="selecionarAvaliacao(1)">&#9733;</span>
@@ -55,9 +54,6 @@
                 <span onmouseover="hoverEstrelas(4)" onmouseout="resetHover()" onclick="selecionarAvaliacao(4)">&#9733;</span>
                 <span onmouseover="hoverEstrelas(5)" onmouseout="resetHover()" onclick="selecionarAvaliacao(5)">&#9733;</span>
             </div>
-
-
-
             <!-- Comentário -->
             <textarea id="comentarioInput" rows="3" placeholder="Deixe um comentário..."></textarea>
             <button class="btn-avaliacao" onclick="enviarAvaliacao()">Enviar avaliação</button>

@@ -383,3 +383,144 @@ function setupTouchEvents(item) {
         }
     }, { passive: false });
 }
+
+
+/* Firebase */
+const firebaseConfig = {
+    apiKey: "AIzaSyA_NJci82viVE-wXH2gNj4ZEWmN708s6WI",
+    authDomain: "youknow-606b5.firebaseapp.com",
+    projectId: "youknow-606b5",
+    storageBucket: "youknow-606b5.firebasestorage.app",
+    messagingSenderId: "983287621066",
+    appId: "1:983287621066:web:a36b889c6e45f4c0e2db33",
+    measurementId: "G-3S0HRSH05Y"
+};
+
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+const analytics = firebase.analytics();
+
+// Obter o ID do quiz a partir do atributo data-quiz-id do <body>
+const quizId = document.body.dataset.quizId || "quiz_padrao";
+
+let avaliacaoSelecionada = 0;
+
+function selecionarAvaliacao(nota) {
+    avaliacaoSelecionada = nota;
+    atualizarEstrelas();
+}
+
+function atualizarEstrelas() {
+    const estrelas = document.querySelectorAll("#estrelas span");
+    estrelas.forEach((estrela, index) => {
+        if (index < avaliacaoSelecionada) {
+            estrela.classList.add("selecionada");
+        } else {
+            estrela.classList.remove("selecionada");
+        }
+    });
+}
+
+function enviarAvaliacao() {
+    const comentario = document.getElementById('comentarioInput').value.trim();
+
+    if (avaliacaoSelecionada === 0 || comentario === "") {
+        alert("Por favor, selecione uma nota e escreva um comentário.");
+        return;
+    }
+
+    const avaliacao = {
+        nota: avaliacaoSelecionada,
+        texto: comentario,
+        timestamp: Date.now()
+    };
+
+    const avaliacoesRef = database.ref(`avaliacoes/${quizId}`);
+    avaliacoesRef.push(avaliacao);
+
+    document.getElementById('comentarioInput').value = "";
+    avaliacaoSelecionada = 0;
+    atualizarEstrelas();
+
+    alert("Obrigado pelo seu feedback!");
+}
+
+function carregarAvaliacoes() {
+    const container = document.getElementById('comentariosRecebidos');
+    const mediaDiv = document.getElementById('mediaAvaliacao');
+    container.innerHTML = "";
+    mediaDiv.innerHTML = "";
+
+    const avaliacoesRef = database.ref(`avaliacoes/${quizId}`);
+
+    avaliacoesRef.on("value", function(snapshot) {
+        container.innerHTML = "";
+        mediaDiv.innerHTML = "";
+
+        let soma = 0;
+        let total = 0;
+        const comentarios = [];
+
+        snapshot.forEach(function(childSnapshot) {
+            const av = childSnapshot.val();
+            soma += av.nota;
+            total++;
+            comentarios.push(av);
+        });
+
+        // Mostrar os 3 mais recentes
+        const ultimos3 = comentarios.slice(-3).reverse();
+        ultimos3.forEach(av => {
+            const div = document.createElement("div");
+            div.innerHTML = `<strong>${"⭐".repeat(av.nota)}</strong> — ${av.texto}`;
+            container.appendChild(div);
+        });
+
+        if (total > 0) {
+            const media = soma / total;
+            const estrelasInteiras = Math.floor(media);
+            const temMeiaEstrela = (media - estrelasInteiras >= 0.25) && (media - estrelasInteiras <= 0.75);
+            const estrelasVazias = 5 - estrelasInteiras - (temMeiaEstrela ? 1 : 0);
+
+            let estrelasHtml = "";
+
+            for (let i = 0; i < estrelasInteiras; i++) {
+                estrelasHtml += '<i class="fas fa-star"></i>';
+            }
+
+            if (temMeiaEstrela) {
+                estrelasHtml += '<i class="fas fa-star-half-alt"></i>';
+            }
+
+            for (let i = 0; i < estrelasVazias; i++) {
+                estrelasHtml += '<i class="far fa-star"></i>';
+            }
+
+            mediaDiv.innerHTML = `
+                <div><strong>Média de avaliação:</strong><br>${estrelasHtml} (${media.toFixed(1)})</div>
+            `;
+        } else {
+            mediaDiv.innerHTML = "Ainda não há avaliações.";
+        }
+    });
+}
+
+/*muda cor estrela hover */
+function hoverEstrelas(nota) {
+    const estrelas = document.querySelectorAll("#estrelas span");
+    estrelas.forEach((estrela, index) => {
+        estrela.style.color = index < nota ? 'gold' : 'gray';
+    });
+}
+
+function resetHover() {
+    const estrelas = document.querySelectorAll("#estrelas span");
+    estrelas.forEach((estrela, index) => {
+        estrela.style.color = index < avaliacaoSelecionada ? 'gold' : 'gray';
+    });
+}
+
+// Carregar avaliações ao abrir a página
+window.onload = function() {
+    carregarAvaliacoes();
+}

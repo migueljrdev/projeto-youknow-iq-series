@@ -13,6 +13,9 @@ body {
     background-color: rgb(6, 31, 0);
     background: linear-gradient(-160deg, rgb(9, 33, 1) 25%, rgb(37, 156, 7) 100%);
     font-family: "Aldrich", sans-serif;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 /* ------------------ Header nav ------------------ */
 
@@ -277,8 +280,8 @@ footer {
     outline: none;
     transform: translateY(-4px);
 }
-/*aba de avaliacao e comentario*/
 
+/*aba de avaliacao e comentario*/
   #estrelas span {
     font-size: 46px;
     cursor: pointer;
@@ -293,7 +296,7 @@ footer {
 .avaliacaoComentario {
     margin-top: 30px;
     padding: 20px;
-    background: rgb(5, 103, 10);
+    background: rgba(9, 33, 1, 0.6);
     border-radius: 8px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.1);
     text-align: center;
@@ -361,6 +364,11 @@ textarea {
     transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
     font-size: clamp(1.4em, 2.5vw, 1.6em);
     width: 100%;
+}
+.btn-avaliacao:hover{
+    background-color: rgba(0, 168, 183, 0.896);
+    outline: none;
+    transform: translateY(-4px);
 }
 .h3-avaliacao{
     color: #FFF;

@@ -384,24 +384,7 @@ function setupTouchEvents(item) {
     }, { passive: false });
 }
 
-/*muda cor estrela hover */
-function hoverEstrelas(nota) {
-    const estrelas = document.querySelectorAll("#estrelas span");
-    estrelas.forEach((estrela, index) => {
-        estrela.style.color = index < nota ? 'gold' : 'gray';
-    });
-}
-
-function resetHover() {
-    const estrelas = document.querySelectorAll("#estrelas span");
-    estrelas.forEach((estrela, index) => {
-        estrela.style.color = index < avaliacaoSelecionada ? 'gold' : 'gray';
-    });
-}
-
-
-
-/*firebase*/
+/* Firebase */
 const firebaseConfig = {
     apiKey: "AIzaSyA_NJci82viVE-wXH2gNj4ZEWmN708s6WI",
     authDomain: "youknow-606b5.firebaseapp.com",
@@ -412,11 +395,12 @@ const firebaseConfig = {
     measurementId: "G-3S0HRSH05Y"
 };
 
-// Initialize Firebase
-
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 const analytics = firebase.analytics();
+
+// Obter o ID do quiz a partir do atributo data-quiz-id do <body>
+const quizId = document.body.dataset.quizId || "quiz_padrao";
 
 let avaliacaoSelecionada = 0;
 
@@ -436,7 +420,6 @@ function atualizarEstrelas() {
     });
 }
 
-
 function enviarAvaliacao() {
     const comentario = document.getElementById('comentarioInput').value.trim();
 
@@ -451,7 +434,7 @@ function enviarAvaliacao() {
         timestamp: Date.now()
     };
 
-    const avaliacoesRef = database.ref('avaliacoes');
+    const avaliacoesRef = database.ref(`avaliacoes/${quizId}`);
     avaliacoesRef.push(avaliacao);
 
     document.getElementById('comentarioInput').value = "";
@@ -467,11 +450,11 @@ function carregarAvaliacoes() {
     container.innerHTML = "";
     mediaDiv.innerHTML = "";
 
-    const avaliacoesRef = database.ref('avaliacoes');
+    const avaliacoesRef = database.ref(`avaliacoes/${quizId}`);
 
     avaliacoesRef.on("value", function(snapshot) {
-        container.innerHTML = "";  // Limpa comentários anteriores
-        mediaDiv.innerHTML = "";   // Limpa média anterior
+        container.innerHTML = "";
+        mediaDiv.innerHTML = "";
 
         let soma = 0;
         let total = 0;
@@ -484,10 +467,9 @@ function carregarAvaliacoes() {
             comentarios.push(av);
         });
 
-        // Mostrar apenas os 3 comentários mais recentes
-        const ultimos5 = comentarios.slice(-5).reverse(); // últimos 3 e em ordem decrescente
-
-        ultimos5.forEach(av => {
+        // Mostrar os 3 mais recentes
+        const ultimos3 = comentarios.slice(-3).reverse();
+        ultimos3.forEach(av => {
             const div = document.createElement("div");
             div.innerHTML = `<strong>${"⭐".repeat(av.nota)}</strong> — ${av.texto}`;
             container.appendChild(div);
@@ -498,7 +480,6 @@ function carregarAvaliacoes() {
             const estrelasInteiras = Math.floor(media);
             const temMeiaEstrela = (media - estrelasInteiras >= 0.25) && (media - estrelasInteiras <= 0.75);
             const estrelasVazias = 5 - estrelasInteiras - (temMeiaEstrela ? 1 : 0);
-            console.log("Média calculada:", media);
 
             let estrelasHtml = "";
 
@@ -515,7 +496,7 @@ function carregarAvaliacoes() {
             }
 
             mediaDiv.innerHTML = `
-                <div><strong>Média de avaliação:</strong> </br>${estrelasHtml} (${media.toFixed(1)})</div>
+                <div><strong>Média de avaliação:</strong><br>${estrelasHtml} (${media.toFixed(1)})</div>
             `;
         } else {
             mediaDiv.innerHTML = "Ainda não há avaliações.";
@@ -523,9 +504,22 @@ function carregarAvaliacoes() {
     });
 }
 
-// Chamar ao carregar a página
+/*muda cor estrela hover */
+function hoverEstrelas(nota) {
+    const estrelas = document.querySelectorAll("#estrelas span");
+    estrelas.forEach((estrela, index) => {
+        estrela.style.color = index < nota ? 'gold' : 'gray';
+    });
+}
+
+function resetHover() {
+    const estrelas = document.querySelectorAll("#estrelas span");
+    estrelas.forEach((estrela, index) => {
+        estrela.style.color = index < avaliacaoSelecionada ? 'gold' : 'gray';
+    });
+}
+
+// Carregar avaliações ao abrir a página
 window.onload = function() {
     carregarAvaliacoes();
 }
-
-
