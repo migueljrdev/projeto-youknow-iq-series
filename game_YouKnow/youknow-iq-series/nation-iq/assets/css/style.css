@@ -1,0 +1,586 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(-160deg, rgb(1, 15, 40) 40%, rgb(10, 126, 172) 99%);
+    font-family: 'Fredoka', Verdana, Geneva, Tahoma, sans-serif;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: clamp(24px, 5vw, 44px);
+    filter: drop-shadow(0px 2px 3px #01E4FE);
+    text-transform: uppercase;
+}
+
+  
+/* ------------------ Header nav ------------------ */
+
+a {
+    text-decoration: none;
+}
+.header {
+    width: 100%;
+}
+    
+.nav {
+  max-width: 1100px;
+  height: 100px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.img-logo {
+  width: 150px;
+}
+
+.img-logo:hover{
+  filter: drop-shadow(0px 0px 2px #ffffff6f);
+  transition: 0.2s linear;
+}
+
+.nav-list {
+  list-style: none;
+}
+
+.nav-list a {
+  font-size: 18px;
+  color: #01E4FE;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #01E4FE;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.nav-list a:hover{
+  background-color: rgba(1, 229, 254, 0.844);
+  border-radius: 10px;
+  color: #010F28;
+  transition: 0.2s linear;
+  box-shadow: 0 0 14px #01e5fe;
+  outline: none;
+  transform: translateY(-4px);
+}
+/* ------------------ FIM header nav------------------ */
+.progress {
+    height: 5px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+}
+.progress--bar {
+    background-color: #00FF00;
+    height: 100%;
+    transition: all ease .5s;
+    width: 0%;
+}
+
+.neutralArea {
+    width: min(98%, 1060px);
+    min-height: 200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 2px solid #ffffff;
+    padding: 10px;
+    gap: 10px;
+}
+
+.item {
+    width: clamp(90px, 22vw, 190px);
+    height: clamp(90px, 22vw, 126px);
+    color: transparent;
+    font-size: clamp(20px, 3vw, 30px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    margin-top: 12px;
+    -webkit-user-select: none;
+    user-select: none;
+    touch-action: none; /* Importante para controle total dos toques */
+    transition: transform 0.1s ease; /* Adiciona feedback visual */
+}
+.item.dragging {
+    opacity: 0.5;
+    transform: scale(1.05); /* Efeito visual ao arrastar */
+    z-index: 1000; /* Garante que fique acima dos outros elementos */
+}
+
+.areas {
+    width: min(98%, 1200px);
+    display: flex;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.areas.correct .area {
+    border: 2px solid #00FF00;
+}
+.area {
+    width: clamp(120px, 20vw, 204px);
+    height: clamp(120px, 20vw, 200px);
+    border: 2px solid #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    text-align: center;
+}
+.area span {
+    color: #FFF;
+    font-weight: 500;
+    font-size: 1.2em;
+    height: 2.2em;
+    display: flex;
+    align-items: center;     /* Alinha verticalmente */
+    justify-content: center; /* Alinha horizontalmente */
+    text-transform: uppercase;
+}
+.hover {
+    background-color: rgba(255, 255, 255, 0.171);
+}
+
+.btn-next {
+    color: #ffffff;
+    font-size: clamp(16px, 3vw, 20px);
+    margin-top: 20px;
+    display: none;
+    text-transform: uppercase;
+    appearance: none;
+    background-color: rgb(46, 200, 12);
+    border: 2px solid rgb(11, 58, 0);
+    border-radius: 40px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-weight: 600;
+    line-height: normal;
+    outline: none;
+    padding: 16px 30px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    will-change: transform;
+}
+
+.btn-next:hover, .btn-next:focus {
+    color: rgb(11, 58, 0);
+    border: 2px solid rgb(11, 58, 0);
+    background-color: rgb(79, 255, 39);
+    box-shadow: 0 0 20px #01E4FE;
+    outline: none;
+    transform: translateY(-4px);
+}
+
+footer {
+    margin-top: 3em;
+    color: #FFF;
+    font-size: clamp(16px, 2vw, 18px);
+    margin-bottom: 10px;
+    text-align: center;
+}
+.ico-img-footer{
+  width: 32px;
+}
+.ico-img-footer:hover{
+  filter: drop-shadow(0px 0px 2px #ffffff);
+  transition: 0.2s linear;
+  transform: translateY(-2px);
+}
+.ico-footer{
+    margin-top: 0.8em;
+    width: 300px;
+    display: flex;
+    gap: 1.5em;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilo da score final */
+.scoreArea {
+    background-color: rgba(1, 229, 254, 0.159);
+    width: min(90%, 500px);
+    border-radius: 30px;
+    text-align: center;
+    display: none;
+    padding: 20px;
+}
+.prizeImage {
+    width: auto;
+    height: clamp(100px, 25vh, 200px);
+    border-radius: 30px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.399);
+}
+.scoreText1 {
+    color: #ffffff;
+    font-weight: bold;
+    margin-top: 0.4em;
+    text-transform: uppercase;
+    text-shadow: 2px 1px 1px rgb(0, 0, 0);
+    font-size: clamp(28px, 5vw, 48px);
+}
+.scorePct {
+    color: #0d630d;
+    font-weight: bold;
+    margin-top: 0.6em;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    font-size: clamp(28px, 6vw, 60px);
+    font-weight: 900;
+    font-family: "Anton", sans-serif;
+}
+.scoreText2 {
+    font-size: clamp(14px, 2.5vw, 24px);
+    color: #ffffff;
+    font-weight: 400;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.629);
+    margin-bottom: 20px;
+}
+
+.btn-restart {
+    border: 1px solid rgb(0, 83, 91);
+    border-radius: 40px;
+    background-color: rgb(0, 122, 134);
+    color: #ffffff;
+    padding: 0.6em 3.4em;
+    cursor: pointer;
+    box-sizing: border-box;
+    outline: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    font-size: clamp(1em, 2.5vw, 1.4em);
+}
+.btn-restart:hover {
+    background-color: rgba(0, 168, 183, 0.896);
+    outline: none;
+    transform: translateY(-4px);
+}
+
+/*aba de avaliacao e comentario*/
+#estrelas span {
+    font-size: 3em;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.2s;
+    filter: drop-shadow(0px 0px 2px #0000006f);
+  }
+
+#estrelas span.selecionada {
+    color: gold;
+  }
+.avaliacaoComentario {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(1, 15, 40, 0.7);
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.estrela.selecionada {
+    color: gold;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    resize: none;
+    background-color: #ffffff;
+}
+
+#comentariosRecebidos {
+    margin-top: 40px;
+    text-align: left;
+    color: white;
+    text-shadow: 0px 0px 2px #000000;
+}
+
+.media-estrelas{
+    margin-top: 1em;
+    color: #FFF;
+    text-shadow: 0px 1px 2px #000000;
+}
+.media-estrelas i {
+    color: gold;
+    font-size: 1.9em;
+    margin-right: 2px;
+    margin-top: 0.2em;
+}
+.media-estrelas strong{
+    text-align: center;
+    font-size: 1.4em;
+}
+
+.btn-avaliacao{
+    border: 1px solid rgb(0, 83, 91);
+    border-radius: 40px;
+    background-color: rgb(0, 122, 134);
+    color: #ffffff;
+    padding: 0.8em 2.2em;
+    cursor: pointer;
+    box-sizing: border-box;
+    outline: none;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+    font-size: clamp(1em, 2.5vw, 1.4em);
+    width: 100%;
+}
+.btn-avaliacao:hover{
+    background-color: rgba(0, 168, 183, 0.896);
+    outline: none;
+    transform: translateY(-4px);
+}
+.h3-avaliacao{
+    color: #FFF;
+    font-size: 1.7em;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.629);
+}
+
+
+/* ------------------ Mobile ------------------ */
+
+@media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden;
+    }
+    .neutralArea {
+    width: min(95%, 1060px);
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    border: 2px solid #ffffff;
+    padding: 5px;
+    gap: 5px;
+    }
+        
+    .item.dragging {
+        transform: scale(1.05);
+        opacity: 0.8;
+        z-index: 1000;
+    }
+    
+    /* Melhore o feedback visual para áreas de drop */
+    .area.hover, .neutralArea.hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transition: background-color 0.2s ease;
+    }
+    .item {
+        width: 27vw;
+        height: 18vw;
+        min-width: 80px;
+        min-height: 53px;
+        margin-top: 0.3em;
+        touch-action: none; /* Isso é essencial para controle total dos toques */
+        -webkit-user-drag: none;
+        user-select: none;
+        transition: transform 0.1s ease;
+        background-size: 100%;
+        background-repeat: no-repeat;
+    }
+    
+    
+    .area {
+        width: 30vw;
+        height: 36vw;
+        min-width: 90px;
+        min-height: 80px;
+        font-size: 0.6em;
+        overflow: hidden;
+    }
+    .area span {
+        height: 2.6em;
+        font-size: 1.2em;
+    }
+    .prizeImage {
+        width: auto;
+        height: clamp(100px, 25vh, 200px);
+    }
+    .btn-next{
+        font-size: 1.3em;
+    }
+    .scoreText1 {
+        font-size: 2.2em;
+    }
+    .scorePct {
+        font-size: 2.84em;
+    }
+    .scoreText2 {
+        font-size: 0.8em;
+    }
+    .btn-restart{
+        font-size: 1.15em;
+    }
+    footer{
+        font-size: 0.6em;
+        margin-bottom: 1em;
+    }
+    .ico-img-footer{
+        width: 20px;
+    }
+}
+
+/* @media screen and (max-width: 768px) {
+    .neutralArea {
+        padding: 15px;
+        gap: 10px;
+    }
+    
+    .item {
+        width: clamp(80px, 20vw, 120px);
+        height: clamp(80px, 20vw, 120px);
+        margin-top: 6px;
+    }
+    
+    .area {
+        width: clamp(100px, 26vw, 124px);
+        height: clamp(100px, 26vw, 124px);
+        font-size: 12px;
+    }
+    
+    h1 {
+        margin-bottom: 25px;
+    }
+} */
+
+/* @media screen and (max-width: 500px) {
+    body {
+        padding: 15px;
+        padding-top: 0;
+    }
+    
+    .neutralArea {
+        padding: 10px;
+        gap: 8px;
+    }
+    
+    .item {
+        width: 20vw;
+        height: 20vw;
+        min-width: 70px;
+        min-height: 70px;
+        margin-top: 5px;
+    }
+    
+    .area {
+        width: 26vw;
+        height: 26vw;
+        min-width: 90px;
+        min-height: 90px;
+        font-size: 12px;
+    }
+    
+    .btn-next, .btn-restart {
+        padding: 1em 3.4em;
+        font-size: 1em;
+    }
+    .scoreArea{
+        width: min(100%, 400px);
+    }
+    .scoreText1 {
+        font-size: 2.2em;
+    }
+    .scorePct {
+        font-size: 2.2em;
+    }
+    .scoreText2 {
+        font-size: 0.82em;
+    }
+    footer {
+        font-size: 0.6em;
+        margin-top: 3em;
+    }
+} */
+
+@media (min-width: 769px) and (max-width: 1024px){
+    html, body {
+        overflow-x: hidden;
+    }
+        
+    .item.dragging {
+        transform: scale(1.05);
+        opacity: 0.8;
+        z-index: 1000;
+    }
+    
+    /* Melhore o feedback visual para áreas de drop */
+    .area.hover, .neutralArea.hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transition: background-color 0.2s ease;
+    }
+    .item {
+        width: 24vw;
+        height: 24vw;
+        min-width: 80px;
+        min-height: 80px;
+        margin-top: 0.3em;
+        touch-action: none; /* Isso é essencial para controle total dos toques */
+        -webkit-user-drag: none;
+        user-select: none;
+        transition: transform 0.1s ease;
+    }
+
+    .area {
+        width: 28vw;
+        height: 34vw;
+        min-width: 90px;
+        min-height: 90px;
+        overflow: hidden;
+    }
+    .area span {
+        height: 2.4em;
+        font-size: 2em;
+        text-transform: uppercase;
+    }
+    .prizeImage {
+        width: auto;
+        height: clamp(100px, 25vh, 200px);
+    }
+    .btn-next{
+        font-size: 2em;
+    }
+    .scoreText1 {
+        font-size: 2.4em;
+    }
+    .scorePct {
+        font-size: 3.8em;
+    }
+    .scoreText2 {
+        font-size: 1.2em;
+    }
+    .btn-restart{
+        font-size: 1.6em;
+    }
+    footer{
+        font-size: 1.1em;
+        margin-top: 2em;
+    }
+}

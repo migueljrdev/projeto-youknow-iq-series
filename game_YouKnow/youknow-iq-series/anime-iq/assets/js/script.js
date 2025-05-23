@@ -40,6 +40,14 @@ function initGame() {
 
     loadLevel(currentLevel);
 }
+// Função utilitária para embaralhar arrays (Fisher-Yates)
+function embaralhar(array) {
+    for (let i = array.length -1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
 
 // Função para carregar um nível
 function loadLevel(level) {
@@ -58,7 +66,7 @@ function loadLevel(level) {
             btnNext.textContent = "Avançar nível";
         }
 
-        //muda a cor da barra de progresso a cada nivel
+        // muda a cor da barra de progresso a cada nível
         if(pct <= 33 ){
             progressBar.style.backgroundColor = "#00FF00";
         } else if(pct > 33 && pct <= 66){
@@ -71,8 +79,12 @@ function loadLevel(level) {
         neutralArea.innerHTML = '';
         areasContainer.innerHTML = '';
         
-        // Adiciona as imagens à área neutra
-        currentGame.options.forEach((option, index) => {
+        // Embaralha as opções e respostas
+        const shuffledOptions = embaralhar([...currentGame.options]);
+        const shuffledRespostas = embaralhar([...currentGame.respostas]);
+
+        // Adiciona as imagens à área neutra (opções embaralhadas)
+        shuffledOptions.forEach((option) => {
             const item = document.createElement('div');
             item.classList.add('item');
             item.setAttribute('draggable', 'true');
@@ -81,35 +93,34 @@ function loadLevel(level) {
             neutralArea.appendChild(item);
         });
         
-        // Adiciona as áreas de resposta
-        currentGame.respostas.forEach((resposta, index) => {
+        // Adiciona as áreas de resposta (respostas embaralhadas)
+        shuffledRespostas.forEach((resposta) => {
             const area = document.createElement('div');
             area.classList.add('area');
             area.setAttribute('data-name', resposta.i);
             
             const span = document.createElement('span');
-            const name = document.createElement('div');
-
             span.textContent = resposta[Object.keys(resposta)[0]];
-            // name.style.color = '#FFF';
             
             area.appendChild(span);
-            // area.appendChild(name);
             areasContainer.appendChild(area);
         });
         
         // Configura os eventos de drag and drop
         setupDragAndDrop();
+
         // Adiciona os listeners de toque para cada item
         document.querySelectorAll('.item').forEach(item => {
             setupTouchEvents(item);
         });
+
         // Esconde a área de pontuação
         scoreArea.style.display = 'none';
     } else {
         finishGame();
     }
 }
+
 
 // Função para configurar os eventos de drag and drop
 function setupDragAndDrop() {

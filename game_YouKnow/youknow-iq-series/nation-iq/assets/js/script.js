@@ -25,7 +25,6 @@ const progressBar = document.querySelector('.progress--bar');
 const btnRestart = document.querySelector('.btn-restart');
 
 // Inicializa o jogo
-detectTouchDevice();
 initGame();
 
 // Event listeners
@@ -41,7 +40,6 @@ function initGame() {
 
     loadLevel(currentLevel);
 }
-
 // Função utilitária para embaralhar arrays (Fisher-Yates)
 function embaralhar(array) {
     for (let i = array.length -1; i > 0; i--) {
@@ -206,6 +204,7 @@ function checkAnswers() {
         btnNext.style.display = 'none';
     }
     
+    
     // Verifica respostas corretas
     document.querySelectorAll('.area').forEach(area => {
         const item = area.querySelector('.item');
@@ -245,26 +244,26 @@ function finishGame() {
     const scorePct = Math.floor((correctAnswers / totalQuestions) * 100);
 
     if(scorePct < 30) {
-        document.querySelector('.scoreText1').innerHTML = 'Sabe nada!';
+        document.querySelector('.scoreText1').innerHTML = 'Volta Para Escola!';
         document.querySelector('.scorePct').style.color = "#FF0000";
-        document.querySelector('.prizeImage').src = "assets/img/img-winner/trofeu-sabe-nada.webp";
+        document.querySelector('.prizeImage').src = "assets/img/escola.webp";
     } else if (scorePct >=30 && scorePct < 50){
-        document.querySelector('.scoreText1').innerHTML = 'Sabe o basico!';
+        document.querySelector('.scoreText1').innerHTML = 'Explorador Iniciante!';
         document.querySelector('.scorePct').style.color = "#FF9900";
-        document.querySelector('.prizeImage').src = "assets/img/img-winner/trofeu-sabe-basico.webp";
+        document.querySelector('.prizeImage').src = "assets/img/explorador.webp";
     } else if (scorePct >=50 && scorePct < 80){
-        document.querySelector('.scoreText1').innerHTML = 'Sabe muito!';
+        document.querySelector('.scoreText1').innerHTML = 'Cidadão do Mundo!';
         document.querySelector('.scorePct').style.color = "#90EE90";
-        document.querySelector('.prizeImage').src = "assets/img/img-winner/trofeu-bom.webp";        
+        document.querySelector('.prizeImage').src = "assets/img/cidadao.jpeg";        
     } else if (scorePct >= 80){
-        document.querySelector('.scoreText1').innerHTML = 'É fanático!';
+        document.querySelector('.scoreText1').innerHTML = 'Geógrafo Lendário!';
         document.querySelector('.scorePct').style.color = "#008000";
-        document.querySelector('.prizeImage').src = "assets/img/img-winner/trofeu-fanatico.webp";        
+        document.querySelector('.prizeImage').src = "assets/img/geografo.jpg";        
     }
     
     document.querySelector('.scorePct').textContent = `Acertou ${scorePct}%`;
     document.querySelector('.scoreText2').textContent = 
-        `De ${totalQuestions} jogadores você conhece ${correctAnswers}`;
+        `De ${totalQuestions} países, você conhece ${correctAnswers}`;
     
     scoreArea.style.display = 'block';
     neutralArea.style.display = 'none';
@@ -395,6 +394,7 @@ function setupTouchEvents(item) {
         }
     }, { passive: false });
 }
+
 
 /* Firebase */
 const firebaseConfig = {

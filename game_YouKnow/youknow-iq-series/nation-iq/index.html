@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>YouKnow: Nation IQ</title>
+    <link rel="icon" href="../../assets/img/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Fredoka:wght@300..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css" />
+    
+</head>
+<body data-quiz-id="anime-iq">
+    <header class="header">
+        <nav class="nav">
+            <a href="../../index.html"><img class="img-logo" src="../../assets/img/logo.png" alt="logotipo-youknow"></a>
+            <ul class="nav-list">
+                <li><a href="../../index.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Nation IQ</h1>
+    
+    <div class="progress">
+        <div class="progress--bar"></div>
+    </div>
+
+    <div class="neutralArea">
+        <!-- As imagens serão inseridas aqui pelo JavaScript -->
+    </div>
+
+    <div class="areas">
+        <!-- As áreas de resposta serão inseridas aqui pelo JavaScript -->
+    </div>
+
+    <button class="btn-next">Avançar nível</button>
+
+    <div class="scoreArea">
+        <img src="assets/img/escola.webp" class="prizeImage" />
+        <div class="scoreText1">Parabéns!</div>
+        <div class="scorePct">Acertou 99%</div>
+        <div class="scoreText2">Você respondeu 9 questões e acertou 8.</div>
+        <button class="btn-restart">Fazer novamente</button>
+
+        <div class="avaliacaoComentario">
+            <h3 class="h3-avaliacao">O que achou do quiz?</h3>
+            <!-- Estrelas -->
+            <div id="estrelas">
+                <span onmouseover="hoverEstrelas(1)" onmouseout="resetHover()" onclick="selecionarAvaliacao(1)">&#9733;</span>
+                <span onmouseover="hoverEstrelas(2)" onmouseout="resetHover()" onclick="selecionarAvaliacao(2)">&#9733;</span>
+                <span onmouseover="hoverEstrelas(3)" onmouseout="resetHover()" onclick="selecionarAvaliacao(3)">&#9733;</span>
+                <span onmouseover="hoverEstrelas(4)" onmouseout="resetHover()" onclick="selecionarAvaliacao(4)">&#9733;</span>
+                <span onmouseover="hoverEstrelas(5)" onmouseout="resetHover()" onclick="selecionarAvaliacao(5)">&#9733;</span>
+            </div>
+            <!-- Comentário -->
+            <textarea id="comentarioInput" rows="3" placeholder="Deixe um comentário..."></textarea>
+            <button class="btn-avaliacao" onclick="enviarAvaliacao()">Enviar avaliação</button>
+            <!-- Lista dos comentários -->
+            <!-- Média das avaliações -->
+            <div id="mediaAvaliacao" class="media-estrelas"></div>
+            <div id="comentariosRecebidos"></div>
+        </div>
+    </div>
+
+    <footer>Desenvolvido por Miguel Jr.
+        <div class="ico-footer">
+            <a href="mailto:conta.mjr@gmail.com" target="_blank" rel="noopener noreferrer"><img src="../assets/img/email.png" alt="ico-email" class="ico-img-footer"></a>
+            <a href="https://github.com/migueljrdev" target="_blank" rel="noopener noreferrer"><img src="../assets/img/github.png" alt="ico-github" class="ico-img-footer"></a>
+            <a href="https://www.instagram.com/migueljr.py" target="_blank" rel="noopener noreferrer"><img src="../assets/img/instagram.png" alt="ico-intagram" class="ico-img-footer"></a>
+            <a href="https://www.linkedin.com/in/miguel-j%C3%BAnior-03048332a/" target="_blank" rel="noopener noreferrer"><img src="../assets/img/linked.png" alt="ico-linkedin" class="ico-img-footer"></a>
+        </div>
+    </footer>
+    <!-- Firebase App (SDK clássico) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <!-- Firebase Database (SDK clássico) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <!-- Firebase Analytics (SDK clássico) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-analytics.js"></script>
+
+    <script src="assets/js/game.js"></script>
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
