@@ -15,7 +15,7 @@
 @font-face {
     font-family: 'Poppins';
     src: url('../../../../assets/fonts/Poppins-Regular.woff2') format('woff2');
-    font-weight: 400; /* regular geralmente é weight 400 */
+    font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
@@ -132,17 +132,15 @@ a {
     background-size: cover;
     background-position: center;
     margin-top: 14px;
-
-    /* ... (seus estilos existentes) ... */
     -webkit-user-select: none;
     user-select: none;
-    touch-action: none; /* Importante para controle total dos toques */
-    transition: transform 0.1s ease; /* Adiciona feedback visual */
+    touch-action: none;
+    transition: transform 0.1s ease;
 }
 .item.dragging {
     opacity: 0.5;
-    transform: scale(1.05); /* Efeito visual ao arrastar */
-    z-index: 1000; /* Garante que fique acima dos outros elementos */
+    transform: scale(1.05);
+    z-index: 1000;
 }
 
 .areas {
@@ -174,8 +172,8 @@ a {
     font-size: 1.2em;
     height: 2.2em;
     display: flex;
-    align-items: center;     /* Alinha verticalmente */
-    justify-content: center; /* Alinha horizontalmente */
+    align-items: center;
+    justify-content: center;
 }
 .hover {
     background-color: rgba(255, 255, 255, 0.171);
@@ -409,7 +407,6 @@ textarea {
         z-index: 1000;
     }
     
-    /* Melhore o feedback visual para áreas de drop */
     .area.hover, .neutralArea.hover {
         background-color: rgba(255, 255, 255, 0.2);
         transition: background-color 0.2s ease;
@@ -420,13 +417,11 @@ textarea {
         min-width: 80px;
         min-height: 80px;
         margin-top: 0.3em;
-        touch-action: none; /* Isso é essencial para controle total dos toques */
+        touch-action: none;
         -webkit-user-drag: none;
         user-select: none;
         transition: transform 0.1s ease;
     }
-    
-    
     .area {
         width: 28vw;
         height: 38vw;
@@ -467,78 +462,6 @@ textarea {
     }
 }
 
-/* @media screen and (max-width: 768px) {
-    .neutralArea {
-        padding: 15px;
-        gap: 10px;
-    }
-    
-    .item {
-        width: clamp(80px, 20vw, 120px);
-        height: clamp(80px, 20vw, 120px);
-        margin-top: 6px;
-    }
-    
-    .area {
-        width: clamp(100px, 26vw, 124px);
-        height: clamp(100px, 26vw, 124px);
-        font-size: 12px;
-    }
-    
-    h1 {
-        margin-bottom: 25px;
-    }
-} */
-
-/* @media screen and (max-width: 500px) {
-    body {
-        padding: 15px;
-        padding-top: 0;
-    }
-    
-    .neutralArea {
-        padding: 10px;
-        gap: 8px;
-    }
-    
-    .item {
-        width: 20vw;
-        height: 20vw;
-        min-width: 70px;
-        min-height: 70px;
-        margin-top: 5px;
-    }
-    
-    .area {
-        width: 26vw;
-        height: 26vw;
-        min-width: 90px;
-        min-height: 90px;
-        font-size: 12px;
-    }
-    
-    .btn-next, .btn-restart {
-        padding: 1em 3.4em;
-        font-size: 1em;
-    }
-    .scoreArea{
-        width: min(100%, 400px);
-    }
-    .scoreText1 {
-        font-size: 2.2em;
-    }
-    .scorePct {
-        font-size: 2.2em;
-    }
-    .scoreText2 {
-        font-size: 0.82em;
-    }
-    footer {
-        font-size: 0.6em;
-        margin-top: 3em;
-    }
-} */
-
 @media (min-width: 769px) and (max-width: 1024px){
     html, body {
         overflow-x: hidden;
@@ -550,7 +473,6 @@ textarea {
         z-index: 1000;
     }
     
-    /* Melhore o feedback visual para áreas de drop */
     .area.hover, .neutralArea.hover {
         background-color: rgba(255, 255, 255, 0.2);
         transition: background-color 0.2s ease;
@@ -561,7 +483,7 @@ textarea {
         min-width: 80px;
         min-height: 80px;
         margin-top: 0.3em;
-        touch-action: none; /* Isso é essencial para controle total dos toques */
+        touch-action: none;
         -webkit-user-drag: none;
         user-select: none;
         transition: transform 0.1s ease;

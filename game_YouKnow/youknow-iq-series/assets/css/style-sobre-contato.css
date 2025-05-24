@@ -124,8 +124,8 @@ a {
 }
 .li-contato a {
   display: flex;
-  align-items: center;       /* Alinha verticalmente ícone e texto */
-  gap: 12px;                 /* Espaço entre ícone e texto */
+  align-items: center;
+  gap: 12px;
   padding: 0.4em;
   font-weight: bold;
   text-decoration: none;

@@ -254,11 +254,11 @@ function finishGame() {
     } else if (scorePct >=50 && scorePct < 80){
         document.querySelector('.scoreText1').innerHTML = 'Cidadão do Mundo!';
         document.querySelector('.scorePct').style.color = "#90EE90";
-        document.querySelector('.prizeImage').src = "assets/img/cidadao.jpeg";        
+        document.querySelector('.prizeImage').src = "assets/img/cidadao.webp";        
     } else if (scorePct >= 80){
         document.querySelector('.scoreText1').innerHTML = 'Geógrafo Lendário!';
         document.querySelector('.scorePct').style.color = "#008000";
-        document.querySelector('.prizeImage').src = "assets/img/geografo.jpg";        
+        document.querySelector('.prizeImage').src = "assets/img/geografo.webp";        
     }
     
     document.querySelector('.scorePct').textContent = `Acertou ${scorePct}%`;

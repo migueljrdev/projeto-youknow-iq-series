@@ -508,7 +508,7 @@ function carregarAvaliacoes() {
             }
 
             mediaDiv.innerHTML = `
-                <div><strong>Média de avaliação:</strong><br>${estrelasHtml} (${media.toFixed(1)})</div>
+                <div><strong>Média de avaliação:</strong></br>${estrelasHtml} (${media.toFixed(1)})</div>
             `;
         } else {
             mediaDiv.innerHTML = "Ainda não há avaliações.";
