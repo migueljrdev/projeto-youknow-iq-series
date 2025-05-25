@@ -298,6 +298,46 @@ footer {
     transform: translateY(-4px);
 }
 
+/*Modal*/
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5); 
+}
+.modal-content {
+  background-color: #fff;
+  position: relative;
+  margin: 15% auto;
+  padding: 40px;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+#mensagemModal{
+    font-size: 1.6em;
+    font-weight: 600;
+}
+.close {
+  color: #ff000075;
+  position: absolute;
+  top: -12px;
+  right: 5px;
+  font-size: 3.4em;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close:hover {
+  color: #ff0000;
+}
+
 /*aba de avaliacao e comentario*/
   #estrelas span {
     font-size: 46px;
@@ -459,6 +499,16 @@ textarea {
     }
     .ico-img-footer{
         width: 20px;
+    }
+
+    #mensagemModal{
+        font-size: 1.1em;
+    }
+    .modal-content{
+        min-width: 340px;
+    }
+    .close {
+    font-size: 3em;
     }
 }
 

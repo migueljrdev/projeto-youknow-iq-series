@@ -459,7 +459,7 @@ function atualizarEstrelas() {
 function enviarAvaliacao() {
     const comentario = document.getElementById('comentarioInput').value.trim();
     if (avaliacaoSelecionada === 0) {
-        alert("Por favor, selecione uma nota e escreva um comentário.");
+        mostrarModal("Por favor, selecione uma nota e escreva um comentário.");
         return;
     }
 

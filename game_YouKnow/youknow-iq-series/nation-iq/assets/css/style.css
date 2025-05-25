@@ -300,7 +300,7 @@ footer {
   padding: 40px;
   border-radius: 12px;
   width: 80%;
-  max-width: 400px;
+  max-width: 500px;
   text-align: center;
   box-shadow: 0 0 15px rgba(0,0,0,0.3);
 }
@@ -309,7 +309,7 @@ footer {
     font-weight: 600;
 }
 .close {
-  color: #aaa;
+  color: #ff000075;
   position: absolute;
   top: -20px;
   right: 10px;
@@ -318,7 +318,7 @@ footer {
   cursor: pointer;
 }
 .close:hover {
-  color: #000;
+  color: #ff0000;
 }
 
 
@@ -485,6 +485,15 @@ textarea {
     }
     .ico-img-footer{
         width: 20px;
+    }
+    #mensagemModal{
+        font-size: 1.2em;
+    }
+    .modal-content{
+        min-width: 340px;
+    }
+    .close {
+        font-size: 3.8em;
     }
 }
 
