@@ -1,6 +1,7 @@
 let currentLevel = 0;
 let correctAnswers = 0;
 let totalQuestions = 0;
+let avaliacaoSelecionada = 0;
 let userAnswers = {};
 
 // Variável global para controle
@@ -413,8 +414,24 @@ const analytics = firebase.analytics();
 
 // Obter o ID do quiz a partir do atributo data-quiz-id do <body>
 const quizId = document.body.dataset.quizId || "quiz_padrao";
+// Modal
+function mostrarModal(mensagem) {
+    document.getElementById('mensagemModal').textContent = mensagem;
+    document.getElementById('feedbackModal').style.display = "block";
+}
 
-let avaliacaoSelecionada = 0;
+function fecharModal() {
+    document.getElementById('feedbackModal').style.display = "none";
+}
+// Fecha o modal ao clicar fora do conteúdo
+window.addEventListener('click', function(event) {
+  const modal = document.getElementById('feedbackModal');
+  if (event.target === modal) {
+    fecharModal();
+  }
+});
+
+
 
 function selecionarAvaliacao(nota) {
     avaliacaoSelecionada = nota;
@@ -435,7 +452,7 @@ function atualizarEstrelas() {
 function enviarAvaliacao() {
     const comentario = document.getElementById('comentarioInput').value.trim();
 
-    if (avaliacaoSelecionada === 0 || comentario === "") {
+    if (avaliacaoSelecionada === 0) {
         alert("Por favor, selecione uma nota e escreva um comentário.");
         return;
     }
@@ -453,7 +470,7 @@ function enviarAvaliacao() {
     avaliacaoSelecionada = 0;
     atualizarEstrelas();
 
-    alert("Obrigado pelo seu feedback!");
+    mostrarModal("Obrigado pelo seu feedback!");
 }
 
 function carregarAvaliacoes() {
