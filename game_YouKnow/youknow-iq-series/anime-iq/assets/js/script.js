@@ -504,7 +504,7 @@ function carregarAvaliacoes() {
         const ultimos3 = comentarios.slice(-3).reverse();
         ultimos3.forEach(av => {
             const div = document.createElement("div");
-            div.innerHTML = `<strong>${"⭐".repeat(av.nota)}</strong> — ${av.texto}`;
+            div.innerHTML = `<strong>${"⭐".repeat(av.nota)}</strong> ${av.texto}`;
             container.appendChild(div);
         });
 
