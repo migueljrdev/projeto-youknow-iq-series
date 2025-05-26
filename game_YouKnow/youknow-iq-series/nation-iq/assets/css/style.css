@@ -401,7 +401,7 @@ textarea {
 }
 .h3-avaliacao{
     color: #FFF;
-    font-size: 1.7em;
+    font-size: 1.4em;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.629);
 }
 
@@ -478,6 +478,7 @@ textarea {
     }
     .btn-restart{
         font-size: 1.15em;
+        width: 100%;
     }
     footer{
         font-size: 0.6em;
