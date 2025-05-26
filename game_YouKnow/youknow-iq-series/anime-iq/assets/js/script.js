@@ -259,7 +259,7 @@ function finishGame() {
     } else if (scorePct >= 80){
         document.querySelector('.scoreText1').innerHTML = 'Lendario!';
         document.querySelector('.scorePct').style.color = "#008000";
-        document.querySelector('.prizeImage').src = "assets/img/img-winner/lendario.jpg";        
+        document.querySelector('.prizeImage').src = "assets/img/img-winner/lendario.jpeg";        
     }
     
     document.querySelector('.scorePct').textContent = `Acertou ${scorePct}%`;
