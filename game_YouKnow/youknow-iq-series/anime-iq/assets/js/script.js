@@ -199,7 +199,7 @@ function checkAnswers() {
     if (allItemsPlaced) {
         btnNext.style.display = 'block';
         
-        // Rola suavemente até o botão
+        // Rola o scroll suavemente até o botão
         btnNext.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } else {
         btnNext.style.display = 'none';
@@ -242,6 +242,9 @@ function nextLevel() {
 
 // Função para finalizar o jogo
 function finishGame() {
+    //Rola o scrool suavemente até o topo
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    
     const scorePct = Math.floor((correctAnswers / totalQuestions) * 100);
 
     if(scorePct < 30) {

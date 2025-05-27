@@ -242,6 +242,9 @@ function nextLevel() {
 
 // Função para finalizar o jogo
 function finishGame() {
+    //Rola o scrool suavemente até o topo
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    
     const scorePct = Math.floor((correctAnswers / totalQuestions) * 100);
 
     if(scorePct < 30) {
