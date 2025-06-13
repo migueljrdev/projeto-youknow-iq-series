@@ -25,9 +25,6 @@ Você conhece tudo isso? Então mostre que **YouKnow**!
 - 💬 Seção de feedback para os jogadores opinarem sobre o quiz
 - 🔥 Design responsivo e visual limpo.
 
-## 📁 Estrutura do Projeto
-
-
 ## 📸 Capturas de Tela
 
 ### 🖥️ Tela inicial do quiz
